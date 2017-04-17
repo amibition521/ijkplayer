@@ -162,18 +162,32 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
 
-        if (mBackPressed || !mVideoView.isBackgroundPlayEnabled()) {
-            mVideoView.stopPlayback();
-            mVideoView.release(true);
-            mVideoView.stopBackgroundPlay();
-        } else {
-            mVideoView.enterBackground();
-        }
-        IjkMediaPlayer.native_profileEnd();
+        mVideoView.suspend();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mVideoView.resume();
+    }
+
+    //@Override
+    //protected void onStop() {
+    //    super.onStop();
+    //
+    //    if (mBackPressed || !mVideoView.isBackgroundPlayEnabled()) {
+    //        mVideoView.stopPlayback();
+    //        mVideoView.release(true);
+    //        mVideoView.stopBackgroundPlay();
+    //    } else {
+    //        mVideoView.enterBackground();
+    //    }
+    //    IjkMediaPlayer.native_profileEnd();
+    //}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
