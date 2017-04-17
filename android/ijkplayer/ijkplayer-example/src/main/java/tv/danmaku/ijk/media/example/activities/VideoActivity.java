@@ -66,7 +66,8 @@ public class VideoActivity extends AppCompatActivity implements TracksFragment.I
 
     public static Intent newIntent(Context context, String videoPath, String videoTitle) {
         Intent intent = new Intent(context, VideoActivity.class);
-        intent.putExtra("videoPath", videoPath);
+        //intent.putExtra("videoPath", videoPath);
+        intent.putExtra("videoPath", "http://pzenc.powzamedia.com:8000/file/multi_700.flv");
         intent.putExtra("videoTitle", videoTitle);
         return intent;
     }
